@@ -13,19 +13,19 @@ namespace ProjectPartB_B1
         public List<PlayingCard> cards = new List<PlayingCard>(MaxNrOfCards);
 
         public PlayingCard this[int idx] => cards[idx];
-        public int Count => cards.Count;
+        public int Count => cards.Count; // Counting the cards
 
         #endregion
 
         #region ToString() related
-        public override string ToString()
+        public override string ToString() 
         {
 
             string sRet = "";
             for (int i = 0; i < cards.Count; i++)
             {
                 sRet += $"{cards[i]}";
-                if ((i + 1) % 13 == 0)
+                if ((i + 1) % 13 == 0) // print out 13 on every line
                 {
                     sRet = sRet + "\n";
                 }
@@ -37,7 +37,7 @@ namespace ProjectPartB_B1
         #region Shuffle and Sorting
         public void Shuffle()
         {
-            Random rnd = new Random();
+            Random rnd = new Random(); //Shuffels the card with random
             for (int b = 0; b < cards.Count; b++)
             {
                 int a = rnd.Next(0, b);
@@ -49,23 +49,23 @@ namespace ProjectPartB_B1
         }
         public void Sort()
         {
-            cards.Sort((x, y) => x.Value.CompareTo(y.Value)); //muffin recept 
+            cards.Sort((x, y) => x.Value.CompareTo(y.Value)); //muffin recipe 
         }
         #endregion
 
         #region Creating a fresh Deck
-        public virtual void Clear()
+        public virtual void Clear() //make an viritual so i can do a override
         {
             cards.Clear();
         }
         public void CreateFreshDeck()
         {
 
-            for (PlayingCardColor color = PlayingCardColor.Clubs; color <= PlayingCardColor.Spades; color++)
+            for (PlayingCardColor color = PlayingCardColor.Clubs; color <= PlayingCardColor.Spades; color++) //creating a deck from clubs-spades
             {
-                for (PlayingCardValue value = PlayingCardValue.Two; value <= PlayingCardValue.Ace; value++)
+                for (PlayingCardValue value = PlayingCardValue.Two; value <= PlayingCardValue.Ace; value++) //creating a deck from 2-ace
                 {
-                    cards.Add(new PlayingCard(color, value));
+                    cards.Add(new PlayingCard(color, value)); // adding both color and value to cards.
                 }
             }
         }
@@ -74,9 +74,9 @@ namespace ProjectPartB_B1
         #region Dealing
         public PlayingCard RemoveTopCard()
         {
-            PlayingCard temp1 = cards[^1]; // minska stacken med 1
-            cards = cards.Take(cards.Count() - 1).ToList(); // Ta ett kort och ta bord -1 från kortet
-            return temp1; // retunerar listan minus 1
+            PlayingCard temp1 = cards[^1]; // takes the last card
+            cards = cards.Take(cards.Count() - 1).ToList(); // Take one card and take it of the list 
+            return temp1; // reurn the temp with 1 card less
         }
         #endregion
     }

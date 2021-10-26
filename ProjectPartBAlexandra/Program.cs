@@ -28,7 +28,7 @@ namespace ProjectPartB_B1
                               $"\nHow many cards to deal to each player (1-5)?");
 
             int nrRounds = 0;
-            bool PlayGame = TryReadNrOfCards(out int nrCardsToPlayer) &&
+            bool PlayGame = TryReadNrOfCards(out int nrCardsToPlayer) && //Error handeling
                           TryReadNrOfRounds(out nrRounds);
 
 
@@ -47,14 +47,14 @@ namespace ProjectPartB_B1
                 Console.WriteLine($"------------------");
 
 
-                
-               
+
+
                 Deal(myDeck, nrCardsToPlayer, player1, player2);
                 Console.WriteLine($"Each player get {nrCardsToPlayer} cards.");
                 Console.WriteLine($"Gave {nrCardsToPlayer} card(s) each to the players from the top of the deck." +
-                    $" Deck has now {myDeck.Count} card(s).\n");
-                Console.WriteLine(player1);
-                Console.WriteLine(player2);
+                                  $" Deck has now {myDeck.Count} card(s).\n");
+                Console.WriteLine($"Player 1 cards:{player1}\n");
+                Console.WriteLine($"Player 2 cards:{player2}\n");
                 Console.WriteLine($"Highest card in player 1 hand is {player1.Lowest}and lowest card is {player1.Highest}");
                 Console.WriteLine($"Highest card in player 2 hand is {player2.Lowest}and lowest card is {player2.Highest}");
                
@@ -119,7 +119,7 @@ namespace ProjectPartB_B1
                 }
                 else if (sInput != "Q" && sInput != "q")
                 {
-                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.ForegroundColor = ConsoleColor.Magenta; //Making pink color if wrong input
                     Console.WriteLine("Wrong input, please try again.");
                 }
             }
@@ -139,12 +139,12 @@ namespace ProjectPartB_B1
         private static void Deal(DeckOfCards myDeck, int nrCardsToPlayer, HandOfCards player1, HandOfCards player2)
         {
 
-            for (int i = 0; i < nrCardsToPlayer; i++) // Vi går bakåt för att minska kortleken
+            for (int i = 0; i < nrCardsToPlayer; i++) 
             {
-                player1.Add(myDeck.RemoveTopCard());
+                player1.Add(myDeck.RemoveTopCard()); //adding and removestopcard
                 player2.Add(myDeck.RemoveTopCard());  
             }
-            //Console.WriteLine(value:$"{player1} cards {player2} cards");
+     
         }
 
         /// <summary>
@@ -160,11 +160,11 @@ namespace ProjectPartB_B1
             var p2 = player2.Highest.Value;
             int value = (p1).CompareTo(p2);
 
-            if (value == 0)
+            if (value == 0) // if they are same its a tie
             {
                 Console.WriteLine("It´s a tie");
             }
-            else if (value < 0)
+            else if (value < 0) 
             {
                 Console.WriteLine("Player2 wins!");
             }

@@ -19,12 +19,8 @@ namespace ProjectPartB_B1
 
 		#region IComparable Implementation
 		//Need only to compare value in the project
-		public int CompareTo(PlayingCard card1)
+		public int CompareTo(PlayingCard card1) //Comparing method
 		{
-
-			//if (this.Value < card1.Value && this.Color < card1.Color) return 1; //Muffinrecept CompareTo större än 0??
-			//else if (this.Value > card1.Value && this.Color > card1.Color) return -1; //mindre än 0?
-			//else return 0;
 			if (this.Value < card1.Value) return 1;
 			else if (this.Value > card1.Value) return -1;
 			else return 0;
