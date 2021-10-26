@@ -54,7 +54,7 @@ namespace ProjectPartB_B1
         #endregion
 
         #region Creating a fresh Deck
-        public void Clear()
+        public virtual void Clear()
         {
             cards.Clear();
         }

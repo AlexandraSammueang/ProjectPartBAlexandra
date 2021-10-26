@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ProjectPartB_B1
 {
     class HandOfCards : DeckOfCards, IHandOfCards
     {
-        protected List<PlayingCard> Hand = new List<PlayingCard>();
+        List<PlayingCard> Hand = new List<PlayingCard>();
         #region Pick and Add related
         public void Add(PlayingCard cards)
         {
-
             this.Hand.Add(cards);
-            this.Hand.Sort();
+            //Sort();
 
         }
+
         #endregion
 
         #region Highest Card related
@@ -24,11 +20,10 @@ namespace ProjectPartB_B1
         {
             get
             {
+                //Sort(); annars denna
                 Hand.Sort();
                 PlayingCard _highest = Hand[^1];
                 return _highest;
-                //return cards.Max();
-
             }
         }
         public PlayingCard Lowest
@@ -37,10 +32,25 @@ namespace ProjectPartB_B1
             {
                 Hand.Sort();
                 PlayingCard _lowest = Hand[0];
-                return _lowest;
-                //return cards.Min();
+                return _lowest;  
             }
         }
-        #endregion
+        /*public void HandSort() //LA TILL NU
+        {
+            cards.Sort((x, y) => x.Value.CompareTo(y.Value)); //muffin recept 
+        }*/
+        public override string ToString()
+        {
+            string sRet = "";
+            for (int i = 0; i < Hand.Count; i++) { sRet += $"{Hand[i]}"; }
+            return sRet;
+        }
+        public override void Clear() 
+        {
+            Hand.Clear();
+        }
+    #endregion
     }
+
 }
+

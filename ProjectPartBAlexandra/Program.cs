@@ -22,8 +22,6 @@ namespace ProjectPartB_B1
 
             HandOfCards player1 = new HandOfCards();
             HandOfCards player2 = new HandOfCards();
-            player1.Add(myDeck.RemoveTopCard());
-            Console.WriteLine(player1);
 
 
             Console.WriteLine($"\nLet's play a game of highest and lowest card with two players." +
@@ -48,21 +46,23 @@ namespace ProjectPartB_B1
                 Console.WriteLine($"\nPlaying round nr {round + 1}");
                 Console.WriteLine($"------------------");
 
+
+                
                
-
-                /* PlayGame = TryReadNrOfCards(out nrCardsToPlayer);
-                 if (!PlayGame)
-                     break;
-
-                 Console.WriteLine($"You entered {nrCardsToPlayer}");*/ //FEEEL HÄÄÄR
-
-                round++;
-
                 Deal(myDeck, nrCardsToPlayer, player1, player2);
-                Console.WriteLine($"{player1}");
-
+                Console.WriteLine($"Each player get {nrCardsToPlayer} cards.");
+                Console.WriteLine($"Gave {nrCardsToPlayer} card(s) each to the players from the top of the deck." +
+                    $" Deck has now {myDeck.Count} card(s).\n");
+                Console.WriteLine(player1);
+                Console.WriteLine(player2);
+                Console.WriteLine($"Highest card in player 1 hand is {player1.Lowest}and lowest card is {player1.Highest}");
+                Console.WriteLine($"Highest card in player 2 hand is {player2.Lowest}and lowest card is {player2.Highest}");
+               
                 DetermineWinner(player1, player2);
-
+                player1.Clear();
+                player2.Clear();
+                
+                round++;
                 //Your code to play the game comes here
 
             }
@@ -142,18 +142,9 @@ namespace ProjectPartB_B1
             for (int i = 0; i < nrCardsToPlayer; i++) // Vi går bakåt för att minska kortleken
             {
                 player1.Add(myDeck.RemoveTopCard());
-                player2.Add(myDeck.RemoveTopCard());
-               
-
-               // player1.RemoveTopCard(); // Tar översta kortet
+                player2.Add(myDeck.RemoveTopCard());  
             }
-           /* for (int i = myDeck.Count - 1; i <= nrCardsToPlayer; i--)
-            {
-                player2.RemoveTopCard();
-
-            }*/
             //Console.WriteLine(value:$"{player1} cards {player2} cards");
-
         }
 
         /// <summary>
@@ -165,9 +156,9 @@ namespace ProjectPartB_B1
         private static void DetermineWinner(HandOfCards player1, HandOfCards player2)
         {
 
-           /* var p1 = player1.cards;
-            var p2 = player2.cards;
-            int value = p1.CompareTo(p2);
+            var p1 = player1.Highest.Value;
+            var p2 = player2.Highest.Value;
+            int value = (p1).CompareTo(p2);
 
             if (value == 0)
             {
@@ -175,12 +166,12 @@ namespace ProjectPartB_B1
             }
             else if (value < 0)
             {
-                Console.WriteLine("Player1 has de highest cards");
+                Console.WriteLine("Player2 wins!");
             }
             else
             {
-                Console.WriteLine("Player2 has the highest cards");
-            }*/
+                Console.WriteLine("Player1 wins!");
+            }
         }
 
     }

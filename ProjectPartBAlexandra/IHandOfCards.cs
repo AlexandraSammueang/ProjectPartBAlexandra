@@ -24,5 +24,7 @@ namespace ProjectPartB_B1
         /// </summary>
         public PlayingCard Lowest { get; }
 
+       
+
     }
 }
