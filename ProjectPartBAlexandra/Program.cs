@@ -47,8 +47,6 @@ namespace ProjectPartB_B1
                 Console.WriteLine($"------------------");
 
 
-
-
                 Deal(myDeck, nrCardsToPlayer, player1, player2);
                 Console.WriteLine($"Each player get {nrCardsToPlayer} cards.");
                 Console.WriteLine($"Gave {nrCardsToPlayer} card(s) each to the players from the top of the deck." +
