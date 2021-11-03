@@ -73,7 +73,7 @@ namespace ProjectPartB_B1
         /// <param name="NrOfCards">Number of cards given by user</param>
         /// <returns>true - if value could be read and converted. Otherwise false</returns>
 
-        private static bool TryReadNrOfCards(out int nrCardsToPlayer)
+        private static bool TryReadNrOfCards(out int nrCardsToPlayer) 
         {
             nrCardsToPlayer = 0;
 
