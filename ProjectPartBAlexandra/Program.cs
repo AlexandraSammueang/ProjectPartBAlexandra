@@ -153,7 +153,6 @@ namespace ProjectPartB_B1
         /// <param name="player2">Player 2</param>
         private static void DetermineWinner(HandOfCards player1, HandOfCards player2)
         {
-
             var p1 = player1.Highest.Value;
             var p2 = player2.Highest.Value;
             int value = (p1).CompareTo(p2);

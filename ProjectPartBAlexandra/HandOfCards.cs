@@ -4,13 +4,10 @@ namespace ProjectPartB_B1
 {
     class HandOfCards : DeckOfCards, IHandOfCards
     {
-        List<PlayingCard> Hand = new List<PlayingCard>();
         #region Pick and Add related
         public void Add(PlayingCard cards)
         {
-            this.Hand.Add(cards); //This:hand add cards
-            
-
+            this.cards.Add(cards); //This:hand add cards //Have chaningg to the List in decofcards      
         }
 
         #endregion
@@ -21,8 +18,8 @@ namespace ProjectPartB_B1
             get
             {
                 
-                Hand.Sort(); //Sorted hand takes the last card(highest)
-                PlayingCard _highest = Hand[^1];
+                cards.Sort(); //Sorted hand takes the last card(highest)
+                PlayingCard _highest = cards[^1];
                 return _highest;
             }
         }
@@ -30,8 +27,8 @@ namespace ProjectPartB_B1
         {
             get
             {
-                Hand.Sort();//Sorted hand takes the lowest card
-                PlayingCard _lowest = Hand[0];
+                cards.Sort();//Sorted hand takes the lowest card
+                PlayingCard _lowest = cards[0];
                 return _lowest;  
             }
         }
@@ -39,12 +36,12 @@ namespace ProjectPartB_B1
         public override string ToString()
         {
             string sRet = "";
-            for (int i = 0; i < Hand.Count; i++) { sRet += $"{Hand[i]}"; }
+            for (int i = 0; i < cards.Count; i++) { sRet += $"{cards[i]}"; }
             return sRet;
         }
         public override void Clear() // doing a a override on clear
         {
-            Hand.Clear();
+            cards.Clear();
         }
     #endregion
     }

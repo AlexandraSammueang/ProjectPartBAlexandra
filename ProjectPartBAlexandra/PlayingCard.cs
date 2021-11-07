@@ -21,8 +21,8 @@ namespace ProjectPartB_B1
 		//Need only to compare value in the project
 		public int CompareTo(PlayingCard card1) //Comparing method
 		{
-			if (this.Value < card1.Value) return 1;
-			else if (this.Value > card1.Value) return -1;
+			if (Value < card1.Value) return 1; 
+			else if (Value > card1.Value) return -1;
 			else return 0;
 		}
 		#endregion
