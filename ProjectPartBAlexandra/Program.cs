@@ -53,8 +53,8 @@ namespace ProjectPartB_B1
                                   $" Deck has now {myDeck.Count} card(s).\n");
                 Console.WriteLine($"Player 1 cards:{player1}\n");
                 Console.WriteLine($"Player 2 cards:{player2}\n");
-                Console.WriteLine($"Highest card in player 1 hand is {player1.Lowest}and lowest card is {player1.Highest}");
-                Console.WriteLine($"Highest card in player 2 hand is {player2.Lowest}and lowest card is {player2.Highest}");
+                Console.WriteLine($"Highest card in player 1 hand is {player1.Highest}and lowest card is {player1.Lowest}");
+                Console.WriteLine($"Highest card in player 2 hand is {player2.Highest}and lowest card is {player2.Lowest}");
                
                 DetermineWinner(player1, player2);
                 player1.Clear();
@@ -153,22 +153,20 @@ namespace ProjectPartB_B1
         /// <param name="player2">Player 2</param>
         private static void DetermineWinner(HandOfCards player1, HandOfCards player2)
         {
-            var p1 = player1.Highest.Value;
-            var p2 = player2.Highest.Value;
-            int value = (p1).CompareTo(p2);
 
-            if (value == 0) // if they are same its a tie
-            {
-                Console.WriteLine("It´s a tie");
-            }
-            else if (value < 0) 
-            {
-                Console.WriteLine("Player2 wins!");
-            }
-            else
+            if ((player1.Highest.CompareTo(player2.Highest) == 1))
             {
                 Console.WriteLine("Player1 wins!");
             }
+            else if ((player1.Highest.CompareTo(player2.Highest) == -1))
+            {
+                Console.WriteLine("Player2 wins!");
+            }
+            else 
+            {
+                Console.WriteLine("It's a tie");
+            }
+
         }
 
     }
